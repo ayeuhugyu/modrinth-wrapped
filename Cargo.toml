@@ -13,7 +13,6 @@ readme = "README.md"
 license = "MIT"
 keywords = ["modrinth", "api", "http", "minecraft"]
 categories = ["api-bindings"]
-publish = false # temp
 rust-version = "1.86.0"
 exclude = [".github", "target"]
 

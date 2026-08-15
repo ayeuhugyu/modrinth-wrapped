@@ -1,6 +1,6 @@
 [package]
 name = "modrinth-wrapped"
-version = "0.1.0"
+version = "0.1.1"
 authors = ["ayeuhugyu"]
 edition = "2024"
 description = """

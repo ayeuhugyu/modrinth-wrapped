@@ -18,5 +18,5 @@ pub struct GalleryItem {
     created: DateField,
     /// The order of the gallery image.
     /// Gallery images are sorted by this field and then alphabetically by title.
-    ordering: Option<u16>,
+    ordering: Option<i32>,
 }

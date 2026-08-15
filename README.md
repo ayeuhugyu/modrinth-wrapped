@@ -9,8 +9,8 @@
 [crates-url]: https://crates.io/crates/modrinth-wrapped
 [mit-badge]: https://img.shields.io/badge/license-MIT-blue
 [mit-url]: https://github.com/ayeuhugyu/modrinth-wrapped/blob/master/LICENSE
-[ci-badge]: https://img.shields.io/badge/github-repo-orange?logo=github
-[ci-url]: https://github.com/ayeuhugyu/modrinth-wrapped/actions?query=workflow%3ACI+branch%3Amaster
+[ci-badge]: https://img.shields.io/github/actions/workflow/status/ayeuhugyu/modrinth-wrapped/ci.yml?branch=master
+[ci-url]: https://github.com/ayeuhugyu/modrinth-wrapped/actions?query=workflow:CI+branch:master
 
 An async rust wrapper for the public Modrinth API (v2).  
 Does not provide any functionality for endpoints requiring Authorization.

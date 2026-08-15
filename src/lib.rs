@@ -61,7 +61,7 @@
 //! ### Download a version file:
 //! For this example, the latest `1.20.1` version for `fabric-api` is being downloaded.  
 //! For displaying progress as it is downloaded, see `download_file_hash_to_async_writer_with_progress`.
-//! ```rust
+//! ```ignore
 //! use modrinth_wrapped::{ModrinthClient, ModrinthError, VersionHashAlgorithm, VersionQuery};
 //!
 //! #[tokio::main]

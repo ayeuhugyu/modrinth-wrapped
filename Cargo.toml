@@ -1,0 +1,51 @@
+[package]
+name = "modrinth-wrapped"
+version = "0.1.0"
+authors = ["ayeuhugyu"]
+edition = "2024"
+description = """
+A Rust wrapper for the public Modrinth API.
+Does not include any functionality for anything using Authorization.
+"""
+repository = "https://github.com/ayeuhugyu/modrinth-wrapped"
+documentation = "https://docs.rs/modrinth-wrapped"
+readme = "README.md"
+license = "MIT"
+keywords = ["modrinth", "api", "http", "minecraft"]
+categories = ["api-bindings"]
+publish = false # temp
+rust-version = "1.86.0"
+exclude = [".github", "target"]
+
+[workspace]
+resolver = "3"
+
+[dependencies]
+chrono = { version = "0.4.45", features = ["serde"], optional = true }
+futures-util = "0.3.34"
+reqwest = { version = "0.13.4", features = ["json"] }
+serde = { version = "1.0.229", features = ["derive"] }
+serde_json = "1.0.151"
+serde_urlencoded = "0.7.1"
+tokio = { version = "1.53.1", features = [
+    "rt",
+    "sync",
+    "time",
+    "io-util",
+], optional = true }
+
+[features]
+default = ["parse-dates", "not-found-error", "rate-limited", "tokio-io"]
+loader-enums = []
+donation-platform-enums = []
+parse-dates = ["dep:chrono"]
+not-found-error = []
+rate-limited = ["dep:tokio"]
+tokio-io = ["dep:tokio"]
+
+[dev-dependencies]
+indicatif = "0.18.6"
+tokio = { version = "1.53.1", features = ["macros", "rt-multi-thread", "fs"] }
+
+[lints.clippy]
+needless_return = { level = "allow", priority = 0 } # call me crazy but i lowkey just dont like implicit returns

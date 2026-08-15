@@ -1,0 +1,49 @@
+on: 
+    push:
+        branches: ["master"]
+    pull_request:
+        branches: ["master"]
+
+name: CI
+
+env:
+    RUSTFLAGS: -Dwarnings
+    RUST_BACKTRACE: 1
+    RUSTUP_WINDOWS_PATH_ADD_BIN: 1
+
+defaults:
+    run:
+        shell: bash
+
+permissions:
+    contents: read
+
+jobs:
+    test:
+        runs-on: ubuntu-latest
+        strategy:
+            fail-fast: false
+            matrix:
+                rust: ["stable", "beta"]
+                features: ["", " --no-default-features", " --all-features"]
+        steps:
+          - uses: actions/checkout@v7
+
+          - name: install rust
+            uses: dtolnay/rust-toolchain@stable
+            with: 
+                toolchain: ${{ matrix.rust }}
+
+          - name: cache
+            uses: Swatinem/rust-cache@v2
+
+          - name: fmt
+            run: cargo fmt --check
+
+          - name: clippy (default)
+            run: cargo clippy -- -D warnings
+            env:
+                RUSTFLAGS: "-Dwarnings"
+
+          - name: test
+            run: cargo test ${{ matrix.features }} --locked

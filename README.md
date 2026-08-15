@@ -17,9 +17,9 @@ Does not provide any functionality for endpoints requiring Authorization.
 
 ## Features
 - `rate-limited`: (default) Enables per-client rate limiting.  
-Note: uses [Tokio](https://tokio.rs) to rate limit requests. If you cannot or don't want to use Tokio, you can disable this feature and implement a custom rate limiter. See the [Modrinth API Docs](https://docs.modrinth.com/api/#ratelimits) for more information.
+  Note: uses [Tokio](https://tokio.rs) to rate limit requests. If you cannot or don't want to use Tokio, you can disable this feature and implement a custom rate limiter. See the [Modrinth API Docs](https://docs.modrinth.com/api/#ratelimits) for more information.
 - `tokio-io`: (default) Enables async functions for downloading version files.  
-If you cannot or don't want to use Tokio, you can disable this feature and implement a custom downloader using `ModrinthClient.download_file_from_hash_response`.
+  If you cannot or don't want to use Tokio, you can disable this feature and implement a custom downloader using `ModrinthClient.download_file_from_hash_response`.
 - `parse-dates`: (default) Enables parsing ISO-8601 date fields into `chrono::DateTime`.
 - `not-found-error`: (default) Enables treating HTTP 404 responses as a dedicated `ModrinthError::NotFound` variant
 - `loader-enums`: Enables the `Loader` enum, which will be used to deserialize/serialize loader fields instead of raw strings.

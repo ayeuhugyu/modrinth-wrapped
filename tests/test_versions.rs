@@ -1,4 +1,5 @@
 use modrinth_wrapped::{ModrinthClient, ModrinthError, VersionQuery};
+use reqwest::StatusCode;
 
 async fn client() -> Result<ModrinthClient, ModrinthError> {
     ModrinthClient::new()
@@ -42,7 +43,11 @@ async fn versions_get_version_roundtrip_from_list_versions() -> Result<(), Modri
         .first()
         .cloned()
         .ok_or_else(|| panic!("no versions returned"))
-        .map_err(|_| ModrinthError::NotFound)?;
+        .map_err(|_| ModrinthError::ApiError {
+            error: "no_versions".into(),
+            description: "no versions returned".into(),
+            status: StatusCode::from_u16(404).unwrap(),
+        })?;
 
     let fetched = c.get_version(v0.id.clone()).await?;
 
@@ -79,7 +84,11 @@ async fn versions_get_project_version_via_number_accepts_id() -> Result<(), Modr
         .first()
         .cloned()
         .ok_or_else(|| panic!("no versions returned"))
-        .map_err(|_| ModrinthError::NotFound)?;
+        .map_err(|_| ModrinthError::ApiError {
+            error: "no_versions".into(),
+            description: "no versions returned".into(),
+            status: StatusCode::from_u16(404).unwrap(),
+        })?;
 
     let fetched = c
         .get_project_version_via_number("fabric-api", v0.id.clone())
@@ -99,7 +108,11 @@ async fn versions_get_project_version_via_number_accepts_version_number()
         .first()
         .cloned()
         .ok_or_else(|| panic!("no versions returned"))
-        .map_err(|_| ModrinthError::NotFound)?;
+        .map_err(|_| ModrinthError::ApiError {
+            error: "no_versions".into(),
+            description: "no versions returned".into(),
+            status: StatusCode::from_u16(404).unwrap(),
+        })?;
 
     let version_number = v0.version_number.clone();
 

@@ -128,3 +128,5 @@ pub(crate) async fn map_response_error(
         }
     }
 }
+
+impl std::error::Error for ModrinthError {}

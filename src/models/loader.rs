@@ -47,7 +47,7 @@ pub enum Loader {
 impl Loader {
     /// Convert to string.
     /// For `Unknown(x)`, returns `x`.
-    fn as_str(&self) -> &str {
+    pub fn as_str(&self) -> &str {
         match self {
             Loader::Babric => "babric",
             Loader::BtaBabric => "bta-babric",
@@ -83,7 +83,7 @@ impl Loader {
     }
 
     /// Parse from `&str`
-    fn from_str_ref(s: &str) -> Self {
+    pub fn from_str_ref(s: &str) -> Self {
         match s {
             "babric" => Loader::Babric,
             "bta-babric" => Loader::BtaBabric,

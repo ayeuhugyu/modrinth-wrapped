@@ -63,7 +63,7 @@ pub struct User {
     pub github_id: Option<u32>,
 }
 
-#[derive(Debug, Clone, PartialEq, Deserialize, Serialize)]
+#[derive(Debug, Clone, Eq, PartialEq, Deserialize, Serialize)]
 #[serde(rename_all = "lowercase")]
 /// The role of a user
 pub enum UserRole {

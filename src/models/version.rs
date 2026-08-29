@@ -3,7 +3,7 @@ use serde::{Deserialize, Serialize};
 use crate::models::project::{DateField, LoaderField};
 use crate::{Environment, VersionFile};
 
-#[derive(Debug, Clone, PartialEq, Deserialize, Serialize)]
+#[derive(Debug, Clone, Eq, PartialEq, Deserialize, Serialize)]
 #[serde(rename_all = "lowercase")]
 /// The type of a dependency
 pub enum DependencyType {
@@ -36,7 +36,7 @@ pub struct Dependency {
     pub dependency_type: DependencyType,
 }
 
-#[derive(Debug, Clone, PartialEq, Deserialize, Serialize)]
+#[derive(Debug, Clone, Eq, PartialEq, Deserialize, Serialize)]
 #[serde(rename_all = "lowercase")]
 /// The status of a project
 pub enum VersionStatus {
